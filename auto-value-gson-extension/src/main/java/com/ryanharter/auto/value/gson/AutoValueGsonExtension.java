@@ -703,7 +703,7 @@ public class AutoValueGsonExtension extends AutoValueExtension {
         .addException(IOException.class);
 
     writeMethod.beginControlFlow("if ($N == null)", annotatedParam);
-    writeMethod.addStatement("$N.nullValue()", jsonWriter);
+   // writeMethod.addStatement("$N.nullValue()", jsonWriter);
     writeMethod.addStatement("return");
     writeMethod.endControlFlow();
 
