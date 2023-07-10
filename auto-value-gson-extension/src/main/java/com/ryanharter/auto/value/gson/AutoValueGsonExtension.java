@@ -702,7 +702,7 @@ public class AutoValueGsonExtension extends AutoValueExtension {
         .addParameter(annotatedParam)
         .addException(IOException.class);
 
-  /*  writeMethod.beginControlFlow("if ($N = null)", annotatedParam);
+    /*writeMethod.beginControlFlow("if ($N = null)", annotatedParam);
     writeMethod.addStatement("$N.nullValue()", jsonWriter);
     writeMethod.addStatement("return");
     writeMethod.endControlFlow();*/
@@ -725,9 +725,9 @@ public class AutoValueGsonExtension extends AutoValueExtension {
       FieldSpec adapterField = adapters.get(prop.type);
       CodeBlock.Builder block = CodeBlock.builder();
       if (!prop.type.isPrimitive()) {
-         /* writeMethod.beginControlFlow("if ($N.$N() == null)", annotatedParam, prop.methodName);
+          writeMethod.beginControlFlow("if ($N.$N() == null)", annotatedParam, prop.methodName);
           //.addStatement("$N.nullValue()", jsonWriter);
-          writeMethod.nextControlFlow("else");*/
+          writeMethod.nextControlFlow("else");
           addConditionalAdapterAssignment(block, adapterField, prop, jsonAdapter, typeParams);
           writeMethod.addCode(block.build());
           writeMethod.addStatement("$N.write($N, $N.$N())", adapterField, jsonWriter, annotatedParam, prop.methodName);
