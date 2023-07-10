@@ -726,7 +726,7 @@ public class AutoValueGsonExtension extends AutoValueExtension {
       CodeBlock.Builder block = CodeBlock.builder();
       if (!prop.type.isPrimitive()) {
           writeMethod.beginControlFlow("if ($N.$N() == null)", annotatedParam, prop.methodName);
-          //.addStatement("$N.nullValue()", jsonWriter);
+          writeMethod.addStatement("$N.nullValue()", jsonWriter);
           writeMethod.nextControlFlow("else");
           addConditionalAdapterAssignment(block, adapterField, prop, jsonAdapter, typeParams);
           writeMethod.addCode(block.build());
