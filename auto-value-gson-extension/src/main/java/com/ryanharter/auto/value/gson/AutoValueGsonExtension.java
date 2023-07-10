@@ -702,10 +702,10 @@ public class AutoValueGsonExtension extends AutoValueExtension {
         .addParameter(annotatedParam)
         .addException(IOException.class);
 
-    writeMethod.beginControlFlow("if ($N == null)", annotatedParam);
-   // writeMethod.addStatement("$N.nullValue()", jsonWriter);
+  /*  writeMethod.beginControlFlow("if ($N = null)", annotatedParam);
+    writeMethod.addStatement("$N.nullValue()", jsonWriter);
     writeMethod.addStatement("return");
-    writeMethod.endControlFlow();
+    writeMethod.endControlFlow();*/
 
     writeMethod.addStatement("$N.beginObject()", jsonWriter);
     for (Property prop : properties) {
